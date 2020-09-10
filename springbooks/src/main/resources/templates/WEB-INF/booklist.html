@@ -26,41 +26,6 @@
 </html>
 
 <script>
-    // let beforeChanges;
-    // $('[contenteditable]').click(function(event) {
-    //      beforeChanges = event.target.innerText;
-    //     console.log(beforeChanges);
-    // });
-    //
-    // $('[contenteditable]').focusout(function(event) {
-    //     let changes = event.target.innerText;
-    //     if(beforeChanges !== changes) {
-    //         console.log(changes);
-    //         $.ajax({
-    //             url: '/edit',
-    //             type: 'PUT',
-    //             data: { beforeChanges: beforeChanges, changes: changes}
-    //         });
-    //     }
-    // });
-    //
-    // $('[contenteditable]').keydown(function(event) {
-    //     const key = event.key;
-    //     if (key === "Delete") {
-    //         $.ajax({
-    //             url: '/deletebook',
-    //             type: 'DELETE',
-    //             data: {beforeChanges: beforeChanges}
-    //         });
-    //     }
-    //     window.location.reload();
-    // });
-    //
-    // $(".container tr").click(function(){
-    //     $(this).addClass('selected').siblings().removeClass('selected');
-    //     let value=$(this).find('td:first').html();
-    // });
-
     let beforeChanges;
     $('[contenteditable]').click(function(event) {
         beforeChanges = event.target.innerText;
@@ -93,6 +58,5 @@
 
     $(".container tr").click(function() {
         $(this).addClass('selected').siblings().removeClass('selected');
-        //let value = $(this).find('td:first').html();
     });
 </script>
