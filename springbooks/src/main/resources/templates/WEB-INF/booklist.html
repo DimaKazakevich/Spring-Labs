@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Book List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{../css/style.css}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<h1>Book List</h1>
+<h2> <a href="addbook">Add new book</a> </h2>
+<br/><br/>
+<div class="container">
+    <table class ="container" border="1">
+        <tr>
+            <th><h1>Title</h1></th>
+            <th><h1>Author</h1></th>
+        </tr>
+        <tr th:each ="book : ${books}">
+            <td contenteditable="true" class="title" th:utext="${book.title}">...</td>
+            <td contenteditable="true" class="author" th:utext="${book.author}">...</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
+
+<script>
+    // let beforeChanges;
+    // $('[contenteditable]').click(function(event) {
+    //      beforeChanges = event.target.innerText;
+    //     console.log(beforeChanges);
+    // });
+    //
+    // $('[contenteditable]').focusout(function(event) {
+    //     let changes = event.target.innerText;
+    //     if(beforeChanges !== changes) {
+    //         console.log(changes);
+    //         $.ajax({
+    //             url: '/edit',
+    //             type: 'PUT',
+    //             data: { beforeChanges: beforeChanges, changes: changes}
+    //         });
+    //     }
+    // });
+    //
+    // $('[contenteditable]').keydown(function(event) {
+    //     const key = event.key;
+    //     if (key === "Delete") {
+    //         $.ajax({
+    //             url: '/deletebook',
+    //             type: 'DELETE',
+    //             data: {beforeChanges: beforeChanges}
+    //         });
+    //     }
+    //     window.location.reload();
+    // });
+    //
+    // $(".container tr").click(function(){
+    //     $(this).addClass('selected').siblings().removeClass('selected');
+    //     let value=$(this).find('td:first').html();
+    // });
+
+    let beforeChanges;
+    $('[contenteditable]').click(function(event) {
+        beforeChanges = event.target.innerText;
+        console.log(beforeChanges);
+    });
+
+    $('[contenteditable]').focusout(function(event) {
+        let changes = event.target.innerText;
+        if(beforeChanges !== changes) {
+            console.log(changes);
+            $.ajax({
+                url: '/edit',
+                type: 'PUT',
+                data: { beforeChanges: beforeChanges, changes: changes}
+            });
+        }
+    });
+
+    $('[contenteditable]').keydown(function(event) {
+        const key = event.key;
+        if (key === "Delete") {
+            $.ajax({
+                url: '/deletebook',
+                type: 'DELETE',
+                data: {beforeChanges: beforeChanges}
+            });
+            window.location.reload();
+        }
+    });
+
+    $(".container tr").click(function() {
+        $(this).addClass('selected').siblings().removeClass('selected');
+        //let value = $(this).find('td:first').html();
+    });
+</script>

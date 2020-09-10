@@ -1,0 +1,56 @@
+@charset "UTF-8";
+/*@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+@import url(https://fonts.google.com/specimen/Open+Sans?query=Open:300);*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+body, input, button {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.42em;
+    color:#A7A1AE;
+    background-color: #1F2739;
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: 300;
+    line-height: 1em;
+    text-align: center;
+    color: #4DC3FA;
+}
+
+h2 {
+    font-size: 1em;
+    font-weight: 300;
+    display: block;
+    line-height: 1em;
+    text-align: center;
+    padding-bottom: 2em;
+    color: #FD667A;
+}
+
+h2 a {
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #FD667A;
+}
+
+tr:not(:first-child):hover {
+    background-color: #ffff99;
+}
+
+.container {
+    text-align: -webkit-center;
+}
+
+.selected {
+    background-color: brown;
+    color: #FFF;
+}
+
+.selected:hover {
+    background-color: brown !important;
+    color: #FFF !important;
+}
+
