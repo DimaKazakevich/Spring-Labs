@@ -74,13 +74,13 @@ public class BookController {
     }
 
     @DeleteMapping({"/deletebook"})
-    public ModelAndView deleteBook(String beforeChanges) {
-        for(int i = 0; i < books.size(); ++i) {
-            if ((books.get(i)).getAuthor().equals(beforeChanges)) {
+    public ModelAndView deleteBook(String selectedTableRow) {
+        for(int i = 0; i < books.size(); i++) {
+            if ((books.get(i)).getAuthor().equals(selectedTableRow)) {
                 books.remove(books.get(i));
             }
 
-            if ((books.get(i)).getTitle().equals(beforeChanges)) {
+            if ((books.get(i)).getTitle().equals(selectedTableRow)) {
                 books.remove(books.get(i));
             }
         }

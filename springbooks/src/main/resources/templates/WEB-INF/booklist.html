@@ -5,6 +5,8 @@
     <title>Book List</title>
     <link rel="stylesheet" type="text/css" th:href="@{../css/style.css}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../js/script.js"></script>
+    <!--<script th:src="@{../js/script.js}"></script>-->
 </head>
 <body>
 <h1>Book List</h1>
@@ -24,39 +26,3 @@
 </div>
 </body>
 </html>
-
-<script>
-    let beforeChanges;
-    $('[contenteditable]').click(function(event) {
-        beforeChanges = event.target.innerText;
-        console.log(beforeChanges);
-    });
-
-    $('[contenteditable]').focusout(function(event) {
-        let changes = event.target.innerText;
-        if(beforeChanges !== changes) {
-            console.log(changes);
-            $.ajax({
-                url: '/edit',
-                type: 'PUT',
-                data: { beforeChanges: beforeChanges, changes: changes}
-            });
-        }
-    });
-
-    $('[contenteditable]').keydown(function(event) {
-        const key = event.key;
-        if (key === "Delete") {
-            $.ajax({
-                url: '/deletebook',
-                type: 'DELETE',
-                data: {beforeChanges: beforeChanges}
-            });
-            window.location.reload();
-        }
-    });
-
-    $(".container tr").click(function() {
-        $(this).addClass('selected').siblings().removeClass('selected');
-    });
-</script>
